@@ -9,26 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var rating: Int = 0
-    
+    @State var rating: Int = 1
     var numberOfStars: Int = 5
     
     
     var body: some View {
         
-        VStack {
-            Text(String(rating))
-        
-        
-        HStack {
-            ForEach(1..<numberOfStars+1, id: \.self){ index in
-                Image(systemName: "star.fill").foregroundColor(rating >= index ? .red : .gray).onTapGesture {
-                    rating = index
+            VStack {
+                Text(String(rating))
+                HStack {
+                    ForEach(1..<numberOfStars+1, id: \.self){ index in
+                        Image(systemName: "star.fill").foregroundColor(rating >= index ? .red : .gray)
+                            .onTapGesture { rating = index }
+                    }
                 }
             }
         }
-        }
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
